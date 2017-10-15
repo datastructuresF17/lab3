@@ -5,28 +5,47 @@
 
 using namespace std;
 
+ // ***** stackInterface methods ***** //
+bool stackInterface::isEmpty() {
+    return mystack.empty();
+}
 
-virtual bool stackInterface::isEmpty() {
+bool stackInterface::push(const std::string &newEntry) {
+    mystack.push(newEntry);
+
+    if(mystack.top() == newEntry)
+        return true;
+    else
+        return false;
+}
+
+bool stackInterface::pop() {
+    if(!mystack.empty()) {
+        mystack.pop();
+        return true;
+    }
+    else
+        return false;
+}
+
+std::string stackInterface::peek() {
+    return mystack.top();
+}
+
+stackInterface::~stackInterface() {}
+
+ // ***** postCalc methods ***** //
+void postCalc::setProblem(std::string &math) {
+    problem = math;
+}
+
+void postCalc::getSolution() {
 
 }
 
-virtual bool stackInterface::push(const T &newEntry) {
+void postCalc::display() {
 
 }
-
-virtual bool stackInterface::pop() {
-
-}
-
-virtual T stackInterface::peek() {
-
-}
-
-virtual stackInterface::~stackInterface() {
-    
-}
-
-
 
 ////////////////////////////////////////////////////////
 void message()
