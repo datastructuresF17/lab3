@@ -6,19 +6,15 @@
 // class prototypes
 
 template<class T>
-class stackInterface {
-private:
-    std::stack<T> mystack;
-public:
+class stackInterface {                  // Credit: F.Carrano & T.Henry
+private:                                // "Data Abstraction & Problem Solving
+    std::stack<T> mystack;              //  with Walls and Mirrors C++ (7th ed)"
+public:                                 // Modified by: Chad Palmer
     virtual bool isEmpty();
     virtual bool push(const T &newEntry);
     virtual bool pop();
     virtual T peek();
     virtual ~stackInterface();
-    // Credit: F.Carrano & T.Henry
-    // "Data Abstraction & Problem Solving
-    //  with Walls and Mirrors C++ (7th ed)"
-    // Modified by: Chad Palmer
 };
 
 class postCalc {
