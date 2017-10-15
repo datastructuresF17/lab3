@@ -1,8 +1,6 @@
 Lab 3: ADT Stacks
 ####################
 
-.. image::  https://travis-ci.com/ACC-COSC2325-001-SU17/lab1-memory-unit-cnpalmer83.svg?token=Nycv9xDmuzpBmZmQjUGG&branch=master
-
 :Author: Chad Palmer
 :Date: October 14, 2017
 :Semester: Fall 2017
