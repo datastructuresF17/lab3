@@ -23,7 +23,7 @@ class postCalc {
 private:
     std::string problem;
     float solution;
-    stackInterface<int> op;
+    stackInterface<float> op;
 public:
     void setProblem(std::string &math);
     void getSolution();

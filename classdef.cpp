@@ -76,9 +76,9 @@ void postCalc::getSolution() {
             op.push(var1 * var2);
         }
         else if(problem.at(index) == '/') {
-            int var2 = op.peek();
+            float var2 = op.peek();
             op.pop();
-            int var1 = op.peek();
+            float var1 = op.peek();
             op.pop();
             op.push(var1 / var2);
         }
