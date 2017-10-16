@@ -50,9 +50,7 @@ void postCalc::getSolution() {
     int size = problem.length();
 
     for(int index = 0; index < size; index++) {
-        if(problem.at(index) != '+' && problem.at(index) != '-' &&
-           problem.at(index) != '*' && problem.at(index) != '/') {
-
+        if(problem.at(index) >= 48 && problem.at(index) <= 57) {
             int variable = (problem.at(index) - 48);
             op.push(variable);
         }
