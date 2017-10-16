@@ -16,7 +16,7 @@ public:                                 // Modified by: Chad Palmer
     bool push(const T &newEntry);
     bool pop();
     T peek();
-    //~stackInterface();            // FIX DESTRUCTOR!!!
+    ~stackInterface();
 };
 
 class postCalc {
@@ -28,6 +28,7 @@ public:
     void setProblem(std::string &math);
     void getSolution();
     void display();
+    ~postCalc();
 };
 
 class myClass {

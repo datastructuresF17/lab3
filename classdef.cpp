@@ -38,8 +38,8 @@ T stackInterface<T>::peek() {
     return mystack.top();
 }
 
-//template<class T>                                // FIX DESTRUCTOR!!!
-//stackInterface<T>::~stackInterface() {}
+template<class T>
+stackInterface<T>::~stackInterface() {}
 
  // ***** postCalc methods ***** //
 void postCalc::setProblem(std::string &math) {
@@ -91,6 +91,8 @@ void postCalc::getSolution() {
 void postCalc::display() {
     cout << "Answer: " << solution << endl;
 }
+
+postCalc::~postCalc() {}
 
     // FUNCTION DEFINITIONS //
 
