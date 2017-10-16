@@ -2,8 +2,8 @@
 #ifndef CLASSDEF_H
 #define CLASSDEF_H
 
-#include<string>
-#include<stack>
+//#include<string>
+//#include<stack>
 
 // class prototypes
 

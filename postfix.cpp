@@ -20,6 +20,6 @@ int main() {
         cout << "\nEnter another equation: ";
         cin  >> equation;
     }
-    cout << "Good bye!\n";
+    cout << "Good bye!\n\n";
     return 0;
 }

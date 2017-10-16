@@ -50,6 +50,7 @@ void postCalc::getSolution() {
     int size = problem.length();
 
     for(int index = 0; index < size; index++) {
+
         if(problem.at(index) >= 48 && problem.at(index) <= 57) {
             int variable = (problem.at(index) - 48);
             op.push(variable);
@@ -96,11 +97,11 @@ postCalc::~postCalc() {}
 
 void intro()
 {
-    cout << "<><><><><><><><><><><><><><><><><><><><><><><>\n"
-         << " This program is a simple postfix calculator.\n"
-         << " It supports single digit variables and\n"
-         << "'+', '-', '*', '/' operands.\n"
-         << "<><><><><><><><><><><><><><><><><><><><><><><>\n\n";
+    cout << "\n<><><><><><><><><><><><><><><><><><><><><><><><>\n"
+         << "| This program is a simple postfix calculator. |\n"
+         << "| It supports single digit variables and       |\n"
+         << "| '+', '-', '*', '/' operands.                 |\n"
+         << "<><><><><><><><><><><><><><><><><><><><><><><><>\n\n";
 
     cout << "Example: (5 - 3 + 2) is entered as (253-+)\n\n";
 }
