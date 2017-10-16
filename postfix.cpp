@@ -4,8 +4,6 @@
 #include "classdef.h"
 using namespace std;
 
-//void makeList(string str);                            DELETE WHEN FINISHED
-
 int main() {
 
     intro();
@@ -14,17 +12,14 @@ int main() {
 
     cout << "Enter an equation: ";
     cin  >> equation;
-    calc.setProblem(equation);
-    calc.getSolution();
-    calc.display();
 
-    return 0;
-
-}
-/*
-void makeList(string str) {                             DELETE WHEN FINISHED
-    for (int i = 0; i < str.length(); i++) {
-        cout << str.at(i);
+    while(equation != "0"){
+        calc.setProblem(equation);
+        calc.getSolution();
+        calc.display();
+        cout << "\nEnter another equation: ";
+        cin  >> equation;
     }
+    cout << "Good bye!\n";
+    return 0;
 }
-*/

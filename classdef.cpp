@@ -5,6 +5,8 @@
 
 using namespace std;
 
+    // CLASS DEFINITIONS //
+
  // ***** stackInterface methods ***** //
 template<class T>
 bool stackInterface<T>::isEmpty() {
@@ -36,7 +38,7 @@ T stackInterface<T>::peek() {
     return mystack.top();
 }
 
-//template<class T>                                 FIX DESTRUCTOR
+//template<class T>                                // FIX DESTRUCTOR!!!
 //stackInterface<T>::~stackInterface() {}
 
  // ***** postCalc methods ***** //
@@ -54,7 +56,7 @@ void postCalc::getSolution() {
             int variable = (problem.at(index) - 48);
             op.push(variable);
         }
-        else if(problem.at(index) == '+') {
+        else if(problem.at(index) == '+') {         // 6.3.1 Algorithm
             int var2 = op.peek();
             op.pop();
             int var1 = op.peek();
@@ -73,14 +75,14 @@ void postCalc::getSolution() {
             op.pop();
             int var1 = op.peek();
             op.pop();
-            op.push(var1 - var2);
+            op.push(var1 * var2);
         }
         else if(problem.at(index) == '/') {
             int var2 = op.peek();
             op.pop();
             int var1 = op.peek();
             op.pop();
-            op.push(var1 - var2);
+            op.push(var1 / var2);
         }
     }
     solution = op.peek();
@@ -90,7 +92,8 @@ void postCalc::display() {
     cout << "Answer: " << solution << endl;
 }
 
-////////////////////////////////////////////////////////
+    // FUNCTION DEFINITIONS //
+
 void intro()
 {
     cout << "<><><><><><><><><><><><><><><><><><><><><><><>\n"
@@ -100,9 +103,4 @@ void intro()
          << "<><><><><><><><><><><><><><><><><><><><><><><>\n\n";
 
     cout << "Example: (5 - 3 + 2) is entered as (253-+)\n\n";
-}
-
-void myClass::printMessage()
-{
-    cout << "object message" << endl;
 }

@@ -16,7 +16,7 @@ public:                                 // Modified by: Chad Palmer
     bool push(const T &newEntry);
     bool pop();
     T peek();
-    //virtual ~stackInterface();            // FIX DESTRUCTOR!!!
+    //~stackInterface();            // FIX DESTRUCTOR!!!
 };
 
 class postCalc {
