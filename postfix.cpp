@@ -4,36 +4,27 @@
 #include "classdef.h"
 using namespace std;
 
-void makeList(string str);
+//void makeList(string str);                            DELETE WHEN FINISHED
 
 int main() {
 
-    cout << "Hello world" << endl;
+    intro();
+    string equation;
+    postCalc calc;
 
-    myClass obj;
-
-    message();
-    obj.printMessage();
-
-    string test1;
-    string test2;
-    test1 = "52";
-    test2 = "2";
-
-    int first = test1.at(0);
-    int second= test1.at(1);
-
-    cout << (test1.at(0) - 48) + (test1.at(1) - 48) << endl;
-    cout << first - second << endl;
-    cout << first * second << endl;
-    cout << first / second << endl;
+    cout << "Enter an equation: ";
+    cin  >> equation;
+    calc.setProblem(equation);
+    calc.getSolution();
+    calc.display();
 
     return 0;
 
 }
-
-void makeList(string str) {
+/*
+void makeList(string str) {                             DELETE WHEN FINISHED
     for (int i = 0; i < str.length(); i++) {
         cout << str.at(i);
     }
 }
+*/

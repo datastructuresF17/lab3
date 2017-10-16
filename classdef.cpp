@@ -36,8 +36,8 @@ T stackInterface<T>::peek() {
     return mystack.top();
 }
 
-template<class T>
-stackInterface<T>::~stackInterface() {}
+//template<class T>                                 FIX DESTRUCTOR
+//stackInterface<T>::~stackInterface() {}
 
  // ***** postCalc methods ***** //
 void postCalc::setProblem(std::string &math) {
@@ -91,9 +91,15 @@ void postCalc::display() {
 }
 
 ////////////////////////////////////////////////////////
-void message()
+void intro()
 {
-    cout << "header message" << endl;
+    cout << "<><><><><><><><><><><><><><><><><><><><><><><>\n"
+         << " This program is a simple postfix calculator.\n"
+         << " It supports single digit variables and\n"
+         << "'+', '-', '*', '/' operands.\n"
+         << "<><><><><><><><><><><><><><><><><><><><><><><>\n\n";
+
+    cout << "Example: (5 - 3 + 2) is entered as (253-+)\n\n";
 }
 
 void myClass::printMessage()

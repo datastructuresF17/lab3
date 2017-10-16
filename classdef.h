@@ -4,18 +4,19 @@
 
 #include<string>
 #include<stack>
+
 // class prototypes
 
 template<class T>
 class stackInterface {                  // Credit: F.Carrano & T.Henry
 private:                                // "Data Abstraction & Problem Solving
-    std::stack<T> mystack;    //  with Walls and Mirrors C++ (7th ed)"
+    std::stack<T> mystack;              //  with Walls and Mirrors C++ (7th ed)"
 public:                                 // Modified by: Chad Palmer
     bool isEmpty();
     bool push(const T &newEntry);
     bool pop();
     T peek();
-    virtual ~stackInterface();
+    //virtual ~stackInterface();            // FIX DESTRUCTOR!!!
 };
 
 class postCalc {
@@ -33,9 +34,10 @@ class myClass {
 public:
     void printMessage();
 };
+
 // function prototypes
 
-void message();
+void intro();
 
 
 #endif // CLASSDEF_H
