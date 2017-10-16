@@ -6,11 +6,13 @@
 using namespace std;
 
  // ***** stackInterface methods ***** //
-bool stackInterface::isEmpty() {
+template<class T>
+bool stackInterface<T>::isEmpty() {
     return mystack.empty();
 }
 
-bool stackInterface::push(const std::string &newEntry) {
+template<class T>
+bool stackInterface<T>::push(const T &newEntry) {
     mystack.push(newEntry);
 
     if(mystack.top() == newEntry)
@@ -19,7 +21,8 @@ bool stackInterface::push(const std::string &newEntry) {
         return false;
 }
 
-bool stackInterface::pop() {
+template<class T>
+bool stackInterface<T>::pop() {
     if(!mystack.empty()) {
         mystack.pop();
         return true;
@@ -28,11 +31,13 @@ bool stackInterface::pop() {
         return false;
 }
 
-std::string stackInterface::peek() {
+template<class T>
+T stackInterface<T>::peek() {
     return mystack.top();
 }
 
-stackInterface::~stackInterface() {}
+template<class T>
+stackInterface<T>::~stackInterface() {}
 
  // ***** postCalc methods ***** //
 void postCalc::setProblem(std::string &math) {
@@ -40,11 +45,49 @@ void postCalc::setProblem(std::string &math) {
 }
 
 void postCalc::getSolution() {
+    int size = problem.length();
 
+    for(int index = 0; index < size; index++) {
+        if(problem.at(index) != '+' && problem.at(index) != '-' &&
+           problem.at(index) != '*' && problem.at(index) != '/') {
+
+            int variable = (problem.at(index) - 48);
+            op.push(variable);
+        }
+        else if(problem.at(index) == '+') {
+            int var2 = op.peek();
+            op.pop();
+            int var1 = op.peek();
+            op.pop();
+            op.push(var1 + var2);
+        }
+        else if(problem.at(index) == '-') {
+            int var2 = op.peek();
+            op.pop();
+            int var1 = op.peek();
+            op.pop();
+            op.push(var1 - var2);
+        }
+        else if(problem.at(index) == '*') {
+            int var2 = op.peek();
+            op.pop();
+            int var1 = op.peek();
+            op.pop();
+            op.push(var1 - var2);
+        }
+        else if(problem.at(index) == '/') {
+            int var2 = op.peek();
+            op.pop();
+            int var1 = op.peek();
+            op.pop();
+            op.push(var1 - var2);
+        }
+    }
+    solution = op.peek();
 }
 
 void postCalc::display() {
-
+    cout << "Answer: " << solution << endl;
 }
 
 ////////////////////////////////////////////////////////

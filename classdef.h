@@ -6,15 +6,15 @@
 #include<stack>
 // class prototypes
 
-
+template<class T>
 class stackInterface {                  // Credit: F.Carrano & T.Henry
 private:                                // "Data Abstraction & Problem Solving
-    std::stack<std::string> mystack;    //  with Walls and Mirrors C++ (7th ed)"
+    std::stack<T> mystack;    //  with Walls and Mirrors C++ (7th ed)"
 public:                                 // Modified by: Chad Palmer
     bool isEmpty();
-    bool push(const std::string &newEntry);
+    bool push(const T &newEntry);
     bool pop();
-    std::string peek();
+    T peek();
     virtual ~stackInterface();
 };
 
@@ -22,7 +22,7 @@ class postCalc {
 private:
     std::string problem;
     float solution;
-    stackInterface op;
+    stackInterface<int> op;
 public:
     void setProblem(std::string &math);
     void getSolution();

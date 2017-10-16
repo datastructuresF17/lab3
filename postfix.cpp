@@ -15,6 +15,19 @@ int main() {
     message();
     obj.printMessage();
 
+    string test1;
+    string test2;
+    test1 = "52";
+    test2 = "2";
+
+    int first = test1.at(0);
+    int second= test1.at(1);
+
+    cout << (test1.at(0) - 48) + (test1.at(1) - 48) << endl;
+    cout << first - second << endl;
+    cout << first * second << endl;
+    cout << first / second << endl;
+
     return 0;
 
 }
