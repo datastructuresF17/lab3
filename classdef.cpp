@@ -55,7 +55,7 @@ void postCalc::setStack(std::string &digit) {
         //getSolution();
     }
     else if (isValid) {
-        for(int index = 0; index <= size - 1; index++) {
+        for(int index = 0; index < size; index++) {
             cout << "1\n";                                      //BREAD CRUMB
             if(digit.at(index) >= 48 && digit.at(index) <= 57) {
                 cout << "2\n";                                   //BREAD CRUMB
@@ -66,10 +66,10 @@ void postCalc::setStack(std::string &digit) {
                 cout << "4\n";                                  //BREAD CRUMB
                 float temp = op.peek();
                 op.pop();
-                if(op.isEmpty()) {
+                if(op.isEmpty() && index != size - 1) {
                     cout << "5\n";                              //BREAD CRUMB
                     isValid = false;
-                    index = size;
+                    //index = size;
                     //getSolution();
                 }
                 else {
@@ -85,7 +85,7 @@ void postCalc::setStack(std::string &digit) {
             }
             cout << "3\n";                                      //BREAD CRUMB
         }
-        //op.pop();
+        op.pop();
     }
 }
 void postCalc::setSolution() {
@@ -106,9 +106,10 @@ void postCalc::setSolution() {
 }
 
 void postCalc::getSolution() {
-    if (isValid)
+
+    if (isValid && op.isEmpty())
         cout << "Answer: " << solution << endl;
-    else
+    else if (!op.isEmpty() | !isValid)
         cout << "Invalid Equation\n";
 
     while (!op.isEmpty())
