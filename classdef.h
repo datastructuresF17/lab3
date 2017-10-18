@@ -1,12 +1,7 @@
-
 #ifndef CLASSDEF_H
 #define CLASSDEF_H
 
-//#include<string>
-//#include<stack>
-
 // class prototypes
-
 template<class T>
 class stackInterface {                  // Credit: F.Carrano & T.Henry
 private:                                // "Data Abstraction & Problem Solving
@@ -21,13 +16,18 @@ public:                                 // Modified by: Chad Palmer
 
 class postCalc {
 private:
-    std::string problem;
-    float solution;
     stackInterface<float> op;
+    int operate;
+    float solution;
+    float var1;
+    float var2;
+    bool isValid;
+
 public:
-    void setProblem(std::string &math);
+    postCalc();
+    void setStack(std::string &digit);
+    void setSolution();
     void getSolution();
-    void display();
     ~postCalc();
 };
 
@@ -37,8 +37,6 @@ public:
 };
 
 // function prototypes
-
 void intro();
-
 
 #endif // CLASSDEF_H

@@ -2,7 +2,6 @@
 #include<string>
 #include<stack>
 #include "classdef.h"
-
 using namespace std;
 
     // CLASS DEFINITIONS //
@@ -42,6 +41,82 @@ template<class T>
 stackInterface<T>::~stackInterface() {}
 
  // ***** postCalc methods ***** //
+postCalc::postCalc() {
+    int operate = 0;
+    float solution = 0;
+    float var1 = 0;
+    float var2 = 0;
+}
+void postCalc::setStack(std::string &digit) {
+    isValid = true;
+    int size = digit.length();
+    if (size == 1) {
+        isValid = false;
+        //getSolution();
+    }
+    else if (isValid) {
+        for(int index = 0; index <= size - 1; index++) {
+            cout << "1\n";                                      //BREAD CRUMB
+            if(digit.at(index) >= 48 && digit.at(index) <= 57) {
+                cout << "2\n";                                   //BREAD CRUMB
+                op.push(digit.at(index) - 48);
+            }
+
+            else {
+                cout << "4\n";                                  //BREAD CRUMB
+                float temp = op.peek();
+                op.pop();
+                if(op.isEmpty()) {
+                    cout << "5\n";                              //BREAD CRUMB
+                    isValid = false;
+                    index = size;
+                    //getSolution();
+                }
+                else {
+                    cout << "6\n";                              //BREAD CRUMB
+                    var2 = temp;
+                    var1 = op.peek();
+                    op.pop();
+                    cout << "digit.at(index)";                  //BREAD CRUMB
+                    operate = digit.at(index);
+                    setSolution();
+                    index = size;
+                }
+            }
+            cout << "3\n";                                      //BREAD CRUMB
+        }
+        //op.pop();
+    }
+}
+void postCalc::setSolution() {
+    cout << "In set";                                           //BREAD CRUMB
+    if (operate == 43)
+        op.push(var1 + var2);
+    else if (operate == 45)
+        op.push(var1 - var2);
+    else if (operate == 42)
+        op.push(var1 * var2);
+    else if (operate == 47)
+        op.push(var1 / var2);
+    else
+        isValid = false;
+
+    solution = op.peek();
+    op.pop();
+}
+
+void postCalc::getSolution() {
+    if (isValid)
+        cout << "Answer: " << solution << endl;
+    else
+        cout << "Invalid Equation\n";
+
+    while (!op.isEmpty())
+        op.pop();
+}
+
+postCalc::~postCalc() {}
+/*
 void postCalc::setProblem(std::string &math) {
     problem = math;
 }
@@ -85,13 +160,14 @@ void postCalc::getSolution() {
         }
     }
     solution = op.peek();
+    op.pop();
 }
 
 void postCalc::display() {
     cout << "Answer: " << solution << endl;
 }
+*/
 
-postCalc::~postCalc() {}
 
     // FUNCTION DEFINITIONS //
 

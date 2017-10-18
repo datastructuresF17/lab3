@@ -14,9 +14,8 @@ int main() {
     cin  >> equation;
 
     while(equation != "0"){
-        calc.setProblem(equation);
+        calc.setStack(equation);
         calc.getSolution();
-        calc.display();
         cout << "\nEnter another equation: ";
         cin  >> equation;
     }
