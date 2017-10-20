@@ -17,23 +17,19 @@ public:                                 // Modified by: Chad Palmer
 class postCalc {
 private:
     stackInterface<float> op;
-    int operate;
-    float solution;
-    float var1;
-    float var2;
-    bool isValid;
-
+    std::string math;
+    int iterate;
+    int strSize;
+    int stackCount;
+    bool done;
 public:
-    postCalc();
-    void setStack(std::string &digit);
-    void setSolution();
-    void getSolution();
-    ~postCalc();
-};
-
-class myClass {
-public:
-    void printMessage();
+    postCalc();                             // Default constructor
+    postCalc(std::string &digits);          // Overloaded constructor
+    void setStack();                        // Populates stack
+    void calculate();                       // performs calculations
+    void getSolution();                     // reads solution
+    void error();                           // displays errors
+    ~postCalc();                            // Destructor
 };
 
 // function prototypes

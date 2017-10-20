@@ -15,7 +15,6 @@ bool stackInterface<T>::isEmpty() {
 template<class T>
 bool stackInterface<T>::push(const T &newEntry) {
     mystack.push(newEntry);
-
     if(mystack.top() == newEntry)
         return true;
     else
@@ -42,133 +41,77 @@ stackInterface<T>::~stackInterface() {}
 
  // ***** postCalc methods ***** //
 postCalc::postCalc() {
-    int operate = 0;
-    float solution = 0;
-    float var1 = 0;
-    float var2 = 0;
+    std::string math = " ";
+    int iterate = 0;
+    int strSize = 0;
+    int stackCount = 0;
+    bool done = false;
 }
-void postCalc::setStack(std::string &digit) {
-    isValid = true;
-    int size = digit.length();
-    if (size == 1) {
-        isValid = false;
-        //getSolution();
-    }
-    else if (isValid) {
-        for(int index = 0; index < size; index++) {
-            cout << "1\n";                                      //BREAD CRUMB
-            if(digit.at(index) >= 48 && digit.at(index) <= 57) {
-                cout << "2\n";                                   //BREAD CRUMB
-                op.push(digit.at(index) - 48);
-            }
 
-            else {
-                cout << "4\n";                                  //BREAD CRUMB
-                float temp = op.peek();
-                op.pop();
-                if(op.isEmpty() && index != size - 1) {
-                    cout << "5\n";                              //BREAD CRUMB
-                    isValid = false;
-                    //index = size;
-                    //getSolution();
-                }
-                else {
-                    cout << "6\n";                              //BREAD CRUMB
-                    var2 = temp;
-                    var1 = op.peek();
-                    op.pop();
-                    cout << "digit.at(index)";                  //BREAD CRUMB
-                    operate = digit.at(index);
-                    setSolution();
-                    index = size;
-                }
-            }
-            cout << "3\n";                                      //BREAD CRUMB
+postCalc::postCalc(std::string &digits) {
+    math = digits;
+    iterate = 0;
+    strSize = digits.length();
+    stackCount = 0;
+    done = false;
+}
+
+void postCalc::setStack() {
+    for (iterate; iterate < strSize; iterate++ && !done) {
+        if (math.at(iterate) >= 48 && math.at(iterate) <= 57) {
+            op.push(math.at(iterate) - 48);
+            stackCount++;
         }
-        op.pop();
+        else {
+            calculate();
+        }
     }
 }
-void postCalc::setSolution() {
-    cout << "In set";                                           //BREAD CRUMB
-    if (operate == 43)
-        op.push(var1 + var2);
-    else if (operate == 45)
-        op.push(var1 - var2);
-    else if (operate == 42)
-        op.push(var1 * var2);
-    else if (operate == 47)
-        op.push(var1 / var2);
-    else
-        isValid = false;
 
-    solution = op.peek();
-    op.pop();
+void postCalc::calculate() {
+    if (stackCount < 2)
+        error();
+    else if (stackCount >= 2) {
+        float var2 = op.peek();
+        op.pop();
+        stackCount--;
+        float var1 = op.peek();
+        op.pop();
+        stackCount--;
+        int operate = math.at(iterate);
+
+        if (operate == 43)
+            op.push(var1 + var2);
+        else if (operate == 45)
+            op.push(var1 - var2);
+        else if (operate == 42)
+            op.push(var1 * var2);
+        else if (operate == 47 && var2 != 0)
+            op.push(var1 / var2);
+        else
+            error();
+
+        stackCount++;
+    }
 }
 
 void postCalc::getSolution() {
-
-    if (isValid && op.isEmpty())
-        cout << "Answer: " << solution << endl;
-    else if (!op.isEmpty() | !isValid)
-        cout << "Invalid Equation\n";
-
-    while (!op.isEmpty())
+    if (stackCount == 1 && !done) {
+        float result = op.peek();
         op.pop();
+        cout << "Answer: " << result;
+    }
+    else {
+        cout << "Answer: Undefined";
+    }
+}
+
+void postCalc::error() {
+    cout << "Invalid equation or operator entered\n";
+    done = true;
 }
 
 postCalc::~postCalc() {}
-/*
-void postCalc::setProblem(std::string &math) {
-    problem = math;
-}
-
-void postCalc::getSolution() {
-    int size = problem.length();
-
-    for(int index = 0; index < size; index++) {
-
-        if(problem.at(index) >= 48 && problem.at(index) <= 57) {
-            int variable = (problem.at(index) - 48);
-            op.push(variable);
-        }
-        else if(problem.at(index) == '+') {         // 6.3.1 Algorithm
-            int var2 = op.peek();
-            op.pop();
-            int var1 = op.peek();
-            op.pop();
-            op.push(var1 + var2);
-        }
-        else if(problem.at(index) == '-') {
-            int var2 = op.peek();
-            op.pop();
-            int var1 = op.peek();
-            op.pop();
-            op.push(var1 - var2);
-        }
-        else if(problem.at(index) == '*') {
-            int var2 = op.peek();
-            op.pop();
-            int var1 = op.peek();
-            op.pop();
-            op.push(var1 * var2);
-        }
-        else if(problem.at(index) == '/') {
-            float var2 = op.peek();
-            op.pop();
-            float var1 = op.peek();
-            op.pop();
-            op.push(var1 / var2);
-        }
-    }
-    solution = op.peek();
-    op.pop();
-}
-
-void postCalc::display() {
-    cout << "Answer: " << solution << endl;
-}
-*/
-
 
     // FUNCTION DEFINITIONS //
 
