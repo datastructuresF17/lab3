@@ -41,11 +41,11 @@ stackInterface<T>::~stackInterface() {}
 
  // ***** postCalc methods ***** //
 postCalc::postCalc() {
-    std::string math = " ";
-    int iterate = 0;
-    int strSize = 0;
-    int stackCount = 0;
-    bool done = false;
+    math = " ";
+    iterate = 0;
+    strSize = 0;
+    stackCount = 0;
+    done = false;
 }
 
 postCalc::postCalc(std::string &digits) {
